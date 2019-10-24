@@ -3,4 +3,6 @@
 def favorite_book(title):
     """display my favorite book"""
     print("One of my favorite books is " + title.title() + ".")
+
+
 favorite_book("Python Crash Course")

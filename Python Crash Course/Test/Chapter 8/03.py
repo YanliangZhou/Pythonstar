@@ -3,5 +3,7 @@
 def make_shirt(size, word):
     """size and word"""
     print("The size of the shirt is " + size + ". And the word on it is " + word + ".")
+
+
 make_shirt("M", "I love Lily")
 make_shirt(size="M", word="I love Lily")

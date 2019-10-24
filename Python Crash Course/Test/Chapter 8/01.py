@@ -2,4 +2,6 @@
 def display_message():
     """didplay what you learn in this chapter"""
     print("I learn how to define a function in this chapter.")
+
+
 display_message()
