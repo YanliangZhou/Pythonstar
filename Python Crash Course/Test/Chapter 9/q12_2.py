@@ -1,3 +1,5 @@
+"""a module of privileges"""
+
 class Privileges():
     """show privileges"""
     def __init__(self):

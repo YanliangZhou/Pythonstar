@@ -1,3 +1,5 @@
+"""a module of restaurant"""
+
 class Restaurant():
     """information of restaurant"""
     def __init__(self, restaurant_name, cuisine_type):
