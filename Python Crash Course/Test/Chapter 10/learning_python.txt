@@ -1,0 +1,3 @@
+In Python you can store data.
+In Python you can read the information of vehicle.
+In Python you can design a game.
