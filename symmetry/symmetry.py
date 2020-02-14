@@ -106,7 +106,7 @@ for times in SSortedlist:
     # ssortedlist = ''.join(str(SSortedlist))
     # print(ssortedlist)
     ssortedlist = ','.join(SSortedlist[count])
-    combination = Ppart[count] + ssortedlist
+    combination = 'W,' + Ppart[count] + ssortedlist
     # list(combination).append('\n')
     com.append(combination)
     # ssortedlist = ''.join(Combination)
