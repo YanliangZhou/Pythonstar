@@ -6,11 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Python Crash Course/Test/Chapter 09" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python Crash Course/Test/Chapter 10" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (Pythonstar)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
-    <option name="projectConfiguration" value="pytest" />
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
   </component>
 </module>

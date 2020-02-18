@@ -4,11 +4,11 @@ from firstpart_permutation import p5, p6
 from secondpart_combination import c2, c3
 from multiple_replace import multiple_replace
 
-Znum = 5
+Znum = 6
 Xlenth = 2
 M = 3 * Znum
-p = p5(5)
-c = c2(5)
+p = p6(6)
+c = c2(6)
 total = M + (Xlenth+2) * len(c) - 1
 count = 0
 lenth = 0
@@ -28,7 +28,7 @@ L = ','.join(l1)  # 消符号
 P = ','.join(p)  # 消符号
 Ppart = [P[q: q + M] for q in range(0, len(P), M)]  # P分块
 # print(Ppart)
-for g, h, i, j, k in zip(P[1::15], P[4::15], P[7::15], P[10::15], P[13::15]):
+for g, h, i, j, k, l in zip(P[1::M], P[4::M], P[7::M], P[10::M], P[13::M], P[16::M]):
     list1 = []
     adict = {
         str(P[1]): g,
@@ -36,6 +36,7 @@ for g, h, i, j, k in zip(P[1::15], P[4::15], P[7::15], P[10::15], P[13::15]):
         str(P[7]): i,
         str(P[10]): j,
         str(P[13]): k,
+        str(P[16]): l,
     }
     list1.append(multiple_replace(C, adict))
     List = ','.join(list1)
