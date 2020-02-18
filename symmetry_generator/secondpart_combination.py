@@ -1,6 +1,6 @@
 #coding=utf-8
 
-def c(n):
+def c3(n):
     '''permutation'''
     list = []
     for i in range(1,n+1):
@@ -12,5 +12,22 @@ def c(n):
     return list
 
 if __name__ == "__main__":
-    c = c(5)
+    c = c3(5)
+    print(c)
+
+
+
+
+def c2(n):
+    '''permutation'''
+    list = []
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+                list.append(i*10+j)
+                list[-1] = 'X' + str(list[-1])
+    # finallist = ','.join(list)
+    return list
+
+if __name__ == "__main__":
+    c = c2(5)
     print(c)

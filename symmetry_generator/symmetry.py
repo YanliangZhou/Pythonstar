@@ -1,15 +1,15 @@
 # coding：utf-8
 
-from firstpart_permutation import p
-from secondpart_combination import c
+from firstpart_permutation import p5, p6
+from secondpart_combination import c2, c3
 from multiple_replace import multiple_replace
 
 Znum = 5
-Xlenth = 3
-total = 64
+Xlenth = 2
 M = 3 * Znum
-p = p(5)
-c = c(5)
+p = p5(5)
+c = c2(5)
+total = M + (Xlenth+2) * len(c) - 1
 count = 0
 lenth = 0
 casenum = 0
