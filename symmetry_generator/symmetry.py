@@ -1,25 +1,22 @@
 # coding：utf-8
 
-from firstpart_permutation import p5, p6
-from secondpart_combination import c2, c3
+from firstpart_permutation import p5, p6, p9
+from secondpart_combination import c2, c3, c1
 from multiple_replace import multiple_replace
 
-Znum = 6
-Xlenth = 2
+Znum = 9
+Xlenth = 1
 M = 3 * Znum
-p = p6(6)
-c = c2(6)
+p = p9(9)
+c = c1(9)
 total = M + (Xlenth+2) * len(c) - 1
 count = 0
 lenth = 0
-casenum = 0
 output = []
 Output = []
-sort1 = []
 sortedlist = []
 SSortedlist = []
 com = []
-Combination = []
 l1 = [p[0]]  # 选取Z第一行
 f1 = l1 + c  # 合并成完整第一行
 F1 = ','.join(f1)  # 消去符号
@@ -28,7 +25,8 @@ L = ','.join(l1)  # 消符号
 P = ','.join(p)  # 消符号
 Ppart = [P[q: q + M] for q in range(0, len(P), M)]  # P分块
 # print(Ppart)
-for g, h, i, j, k, l in zip(P[1::M], P[4::M], P[7::M], P[10::M], P[13::M], P[16::M]):
+
+for g, h, i, j, k, l, m, n, o in zip(P[1::M], P[4::M], P[7::M], P[10::M], P[13::M], P[16::M], P[19::M], P[22::M], P[25::M]):
     list1 = []
     adict = {
         str(P[1]): g,
@@ -37,12 +35,16 @@ for g, h, i, j, k, l in zip(P[1::M], P[4::M], P[7::M], P[10::M], P[13::M], P[16:
         str(P[10]): j,
         str(P[13]): k,
         str(P[16]): l,
+        str(P[19]): m,
+        str(P[22]): n,
+        str(P[25]): o,
     }
     list1.append(multiple_replace(C, adict))
     List = ','.join(list1)
     comb = Ppart[count] + List
     output.append(comb)
     count += 1
+
 # print(output)
 count = 0
 
@@ -53,6 +55,7 @@ for a in output:
     else:
         Output = str(Output) + a
         count += 1
+
 # print(output)
 count = 0
 # print(Output[0])
@@ -80,48 +83,23 @@ for b in CC:
         sortedl = [str(x) for x in Sort]
         sortedl = sorted(sortedl, key=lambda d: int(d))
         sortedlist = ''.join(list(sortedl))
-        sortedlist = 'X' + str(sortedlist) + ''
+        sortedlist = 'Y' + str(sortedlist) + ''
         Sortedlist.append(sortedlist)
-        # Sort.append(',')
         # print(str(sortedlist))
     SSortedlist.append(Sortedlist)
-
-        # print(Sort)
-        # list(Sort).sort()
-        # Sort = 'X' + str(Sort)
-        # sortedlist = slist.split()
-        # sortedlist.sort()
-        # sortedlist = ''.join(sortedlist)
-        # sortedlist = 'X' + str(sortedlist) + ''
-        # print(Sort)
-        # Sortedlist.append(sortedlist)
-    # print(Sortedlist)
     count += 1
 
 count = 0
-# print(SSortedlist[0])
-# SSortedlistpart = [SSortedlist[q: q + M] for q in range(0, len(SSortedlist), M)]  # SSortedlist分块
-    # SortedList.append(Sortedlist)
-# print(SortedList)
+
 for times in SSortedlist:
-    # ssortedlist = ''.join(str(SSortedlist))
-    # print(ssortedlist)
     ssortedlist = ','.join(SSortedlist[count])
-    combination = 'W,' + Ppart[count] + ssortedlist
-    # list(combination).append('\n')
+    combination = Ppart[count] + ssortedlist + ',S'
     com.append(combination)
-    # ssortedlist = ''.join(Combination)
     count += 1
 
-# com = str(Combination).split('\n')
 count = 0
 Com = ''.join(com)
-# COM = list(Com)
-print(Com[0])
-print(com)
-# print(Combination)
-'''排序'''
-# print(Output)
+
 file = open('Symmetry','w')
 
 for row in com:

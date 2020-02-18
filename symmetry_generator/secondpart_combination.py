@@ -31,3 +31,19 @@ def c2(n):
 if __name__ == "__main__":
     c = c2(5)
     print(c)
+
+
+
+
+def c1(n):
+    '''permutation'''
+    list = []
+    for i in range(1,n+1):
+                list.append(i)
+                list[-1] = 'Y' + str(list[-1])
+    # finallist = ','.join(list)
+    return list
+
+if __name__ == "__main__":
+    c = c1(9)
+    print(c)
