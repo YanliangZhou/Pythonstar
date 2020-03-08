@@ -3,4 +3,3 @@ a = ["1","11","2","111"]
 b = [int(x) for x in a]
 b=sorted(b,key=lambda d:int(d))
 print(b)
-print(b)
