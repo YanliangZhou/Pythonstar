@@ -1,4 +1,3 @@
-
 class Solution:
     def removeElement(self, nums, val):
         start, end = 0, len(nums) - 1

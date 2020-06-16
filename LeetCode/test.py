@@ -20,6 +20,6 @@ if __name__ == "__main__":
     # print(nums)
 
 A = [4, -4, 7, -6, 6, 4]
-for x in range(1, len(A) + 1):
-    # print(x)
-    print(A[0:x])
+# for x in range(1, len(A) + 1):
+#     # print(x)
+print(A[0, 2])
