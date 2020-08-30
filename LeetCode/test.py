@@ -23,8 +23,4 @@
 
 
 
-seq = ['one', 'two', 'three']
-num = [(number, index) for index, number in enumerate(seq)]
-nums = sorted(num)
-print(num)
-print(nums)
+print(3.8//2)
