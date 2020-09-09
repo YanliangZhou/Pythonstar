@@ -19,8 +19,5 @@
 #     answer = Solution()
 #     sol = answer.twoSum(list, 6)
 #     print(sol)
-
-
-
-
-print(3.8//2)
+s = [0 for _ in range(25)]
+print(s)
