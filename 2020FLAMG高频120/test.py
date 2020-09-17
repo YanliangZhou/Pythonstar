@@ -1,21 +1,41 @@
 class Solution:
     """
-    @param s: A string
-    @return: whether the string is a valid parentheses
+    @param A: an integer rotated sorted array
+    @param target: an integer to be searched
+    @return: an integer
     """
-    def isValidParentheses(self, s):
-        # write your code here
-        dic = {"[": "]", "{": "}", "(": ")"}
-        stack = []
-        for item in s:
-            if item in dic:
-                stack.append(dic[item])
-            elif not stack or item != stack.pop():
-                return False
-        return not stack
-#
-if __name__ == '__main__':
-    a = '([])'
-    b = Solution()
-    output = b.isValidParentheses(a)
-    print(output)
+
+    def search(self, A, target):
+        if not A:
+            return -1
+
+        index = self.find_min_index(A)
+        if A[index] <= target <= A[-1]:
+            return self.binary_search(A, index, len(A) - 1, target)
+        return self.binary_search(A, 0, index - 1, target)
+
+    def find_min_index(self, A):
+        start, end = 0, len(A) - 1
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if A[mid] < A[end]:
+                end = mid
+            else:
+                start = mid
+
+        if A[start] < A[end]:
+            return start
+        return end
+
+    def binary_search(self, A, start, end, target):
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if A[mid] < target:
+                start = mid
+            else:
+                end = mid
+        if A[start] == target:
+            return start
+        if A[end] == target:
+            return end
+        return -1
