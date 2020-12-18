@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python Crash Course/Test/Chapter 09" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python Crash Course/Test/Chapter 10" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoProject/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoProject1/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoProject3/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
