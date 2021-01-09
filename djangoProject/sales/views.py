@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from common.models import Customer
+# from common.models import Customer
 # Create your views here.
 def listorders(request):
     return HttpResponse('下面是系统中所有订单信息。。。')
@@ -41,25 +41,25 @@ th, td {
 '''
 
 
-def listcustomers(request):
-    # 返回一个 QuerySet 对象 ，包含所有的表记录
-    qs = Customer.objects.values()
-
-    # 检查url中是否有参数phonenumber
-    ph = request.GET.get('phonenumber', None)
-
-    # 如果有，添加过滤条件
-    if ph:
-        qs = qs.filter(phonenumber=ph)
-
-    # 生成html模板中要插入的html片段内容
-    tableContent = ''
-    for customer in qs:
-        tableContent += '<tr>'
-
-        for name, value in customer.items():
-            tableContent += f'<td>{value}</td>'
-
-        tableContent += '</tr>'
-
-    return HttpResponse(html_template % tableContent)
+# def listcustomers(request):
+#     # 返回一个 QuerySet 对象 ，包含所有的表记录
+#     qs = Customer.objects.values()
+#
+#     # 检查url中是否有参数phonenumber
+#     ph = request.GET.get('phonenumber', None)
+#
+#     # 如果有，添加过滤条件
+#     if ph:
+#         qs = qs.filter(phonenumber=ph)
+#
+#     # 生成html模板中要插入的html片段内容
+#     tableContent = ''
+#     for customer in qs:
+#         tableContent += '<tr>'
+#
+#         for name, value in customer.items():
+#             tableContent += f'<td>{value}</td>'
+#
+#         tableContent += '</tr>'
+#
+#     return HttpResponse(html_template % tableContent)

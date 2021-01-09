@@ -3,3 +3,16 @@ alt+shift+鼠标拉选就能选择选中列的文本并可以同时输入相同�
 ctrl+点击函数名，就能跳转到函数定义处
 管理网站用户名：admin，密码：123456(0315)
 https://blog.csdn.net/bbwangj/article/details/93409237
+http://127.0.0.1:8000/mgr/sign.html final web
+http://127.0.0.1:8000/admin/        administrator web
+mport: load data local infile '/home/yanliangzhou/PycharmProjects/Python3/djangoProject/SPY.txt' into table common_order fields terminated by ',' escaped by '"' lines terminated by '\n';
+create database: create database xxx
+DROP DATABASE xxx :#删除数据库
+CREATE TABLE mybook (name char(15),price int,pages int); #创建数据表单，然后进行表单的初始化
+DESCRIBE mybook; #描述表单
+INSERT INTO mybook(name,price,pages) VALUES("linuxprobe","60","518"); #向表单中插入一条记录
+UPDATE mybook SET price=55 ; #更新表单记录
+SELECT name,price FROM mybook; #按照字段查询表单
+SELECT * FROM mybook; #查询表单全部内容
+SELECT * FROM mybook WHERE price>75; #where条件匹配查询price>75的记录
+DELETE FROM mybook; #清空表单内容
