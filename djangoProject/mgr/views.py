@@ -26,13 +26,26 @@ th, td {
     <body>
         <table>
         <tr>
-        <th>Date</th>
-        <th>Open Price</th>
-        <th>High Price</th>
-        <th>Low Price</th>
-        <th>Close Price</th>
-        <th>Adj Close Price</th>
-        <th>Volume</th>
+        <th>time</th>
+        <th>side</th>
+        <th>qty</th>
+        <th>symbol</th>
+        <th>px</th>
+        <th>exchange</th>
+        <th>class_type</th>
+        <th>description</th>
+        <th>tags</th>
+        <th>local_time</th>
+        <th>source</th>
+        <th>orderID</th>
+        <th>exchangeOID</th>
+        <th>fillID</th>
+        <th>strategy</th>
+        <th>ilink</th>
+        <th>px_multiplier</th>
+        <th>multiplier</th>
+        <th>TO</th>
+        <th>OC</th>
         </tr>
 
         %s
@@ -49,18 +62,23 @@ def listorders(request):
     qs = Order.objects.values()
 
     # 检查url中是否有参数phonenumber
-    ph = request.GET.get('date', None)
+    ph = request.GET.get('time', None)
 
     # 如果有，添加过滤条件
     if ph:
-        qs = qs.filter(create_date=ph)
+        qs = qs.filter(time=ph)
 
     # 生成html模板中要插入的html片段内容
     tableContent = ''
+    i = 0
     for order in qs:
-        tableContent += '<tr>'
-        for name, value in order.items():
-            tableContent += f'<td>{value}</td>'
-        tableContent += '</tr>'
-
+        if i == 0:
+            i += 1
+            continue
+        else:
+            tableContent += '<tr>'
+            for name, value in order.items():
+                tableContent += f'<td>{value}</td>'
+            tableContent += '</tr>'
+    i = 0
     return HttpResponse(html_template % tableContent)

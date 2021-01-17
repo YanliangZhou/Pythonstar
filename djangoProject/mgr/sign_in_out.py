@@ -22,13 +22,13 @@ def signin(request):
 
                 return JsonResponse({'ret': 0})
             else:
-                return JsonResponse({'ret': 1, 'msg': '请使用管理员账户登录'})
+                return JsonResponse({'ret': 1, 'msg': 'Please use administrator account to login'})
         else:
-            return JsonResponse({'ret': 0, 'msg': '用户已经被禁用'})
+            return JsonResponse({'ret': 0, 'msg': 'User is not activated'})
 
     # 否则就是用户名、密码有误
     else:
-        return JsonResponse({'ret': 1, 'msg': '用户名或者密码错误'})
+        return JsonResponse({'ret': 1, 'msg': 'Incorrect user name or password'})
 
 
 # 登出处理

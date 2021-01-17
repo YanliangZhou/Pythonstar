@@ -28,33 +28,27 @@ class Order(models.Model):
 
     # # Date
     # create_date = models.DateTimeField(default=datetime.datetime.now)
-    # Date
 
-    create_date = models.CharField(primary_key=True,max_length=200)
-
-    # Open price
-    open_price = models.CharField(max_length=200)
-
-    # High price
-    high_price = models.CharField(max_length=200)
-
-    # Low price
-    low_price = models.CharField(max_length=200)
-
-    # Close price
-    close_price = models.CharField(max_length=200)
-
-    # Adj close price
-    adj_close_price = models.CharField(max_length=200)
-
-    # Volume
-    volume = models.IntegerField()
-
-    # # 客户
-    # customer = models.ForeignKey(Customer,on_delete=models.PROTECT)
-
-    # # 订单购买的药品，和Medicine表是多对多 的关系
-    # medicines = models.ManyToManyField(Medicine, through='OrderMedicine')
+    time = models.CharField(max_length=200,default="",primary_key = True)
+    side = models.CharField(max_length=200,default="")
+    qty = models.CharField(max_length=200,default="")
+    symbol = models.CharField(max_length=200,default="")
+    px = models.CharField(max_length=200,default="")
+    exchange = models.CharField(max_length=200,default="")
+    class_type = models.CharField(max_length=200,default="")
+    description = models.CharField(max_length=200,default="")
+    tags = models.CharField(max_length=200,default="")
+    local_time = models.CharField(max_length=200,default="")
+    source = models.CharField(max_length=200,default="")
+    orderID = models.CharField(max_length=200,default="")
+    exchangeOID = models.CharField(max_length=200,default="")
+    fillID = models.CharField(max_length=200,default="")
+    strategy = models.CharField(max_length=200,default="")
+    ilink = models.CharField(max_length=200,default="")
+    px_multiplier = models.CharField(max_length=200,default="")
+    multiplier = models.CharField(max_length=200,default="")
+    TO = models.CharField(max_length=200,default="")
+    OC = models.CharField(max_length=200,default="")
 
 
 # class OrderMedicine(models.Model):
