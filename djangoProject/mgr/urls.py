@@ -4,7 +4,10 @@ from mgr import sign_in_out
 # from mgr import medicine
 from mgr.views import listorders
 
+from . import views
+
 urlpatterns = [
+    path('', views.listorders,name="home"),
     path('orders', listorders),
     # path('customers', customer.dispatcher),
     # path('medicines', medicine.dispatcher),

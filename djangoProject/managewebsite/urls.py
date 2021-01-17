@@ -21,5 +21,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sales/', include('sales.urls')),
-    path('api/mgr/', include('mgr.urls')),
+    # path('api/mgr/', include('mgr.urls')),
+    path('', include('mgr.urls')),
 ] +  static("/", document_root="./z_dist")
