@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sales.apps.ManagewebConfig',
-    'common.apps.CommonConfig'
+    'common.apps.CommonConfig',
+    'mgr',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'managewebsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'order_webmanager',
+        'NAME': 'ordermanager',
         'USER': 'root',
         'PASSWORD': '0315',
         'HOST': '',  # Default: localhost

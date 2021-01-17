@@ -23,4 +23,4 @@ urlpatterns = [
     path('sales/', include('sales.urls')),
     # path('api/mgr/', include('mgr.urls')),
     path('', include('mgr.urls')),
-] +  static("/", document_root="./z_dist")
+] +  static("/", document_root="./z_dist1")

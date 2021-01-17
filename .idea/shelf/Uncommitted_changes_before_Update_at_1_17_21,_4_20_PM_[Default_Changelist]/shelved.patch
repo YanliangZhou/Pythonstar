@@ -1,0 +1,166 @@
+Index: djangoProject/mgr/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.urls import path\n# from mgr import customer\nfrom mgr import sign_in_out\n# from mgr import medicine\nfrom mgr.views import listorders\n\nurlpatterns = [\n    path('orders', listorders),\n    # path('customers', customer.dispatcher),\n    # path('medicines', medicine.dispatcher),\n    path('signin', sign_in_out.signin),\n    path('signout', sign_in_out.signout),\n]\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/mgr/urls.py b/djangoProject/mgr/urls.py
+--- a/djangoProject/mgr/urls.py	(revision 5a9afdf7b94b32d0c14395b38b34cf20bb355cc1)
++++ b/djangoProject/mgr/urls.py	(date 1610840674053)
+@@ -1,13 +1,13 @@
+ from django.urls import path
+ # from mgr import customer
+-from mgr import sign_in_out
++from . import sign_in_out
+ # from mgr import medicine
+ from mgr.views import listorders
+ 
+-urlpatterns = [
+-    path('orders', listorders),
++urlpatterns = {
++    path('', listorders),
+     # path('customers', customer.dispatcher),
+     # path('medicines', medicine.dispatcher),
+     path('signin', sign_in_out.signin),
+     path('signout', sign_in_out.signout),
+-]
++}
+Index: djangoProject/mgr/apps.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.apps import AppConfig\n\n\nclass MgrConfig(AppConfig):\n    name = 'mgr'\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/mgr/apps.py b/djangoProject/mgr/apps.py
+--- a/djangoProject/mgr/apps.py	(revision 5a9afdf7b94b32d0c14395b38b34cf20bb355cc1)
++++ b/djangoProject/mgr/apps.py	(date 1610840674082)
+@@ -1,5 +1,5 @@
+-from django.apps import AppConfig
+-
+-
+-class MgrConfig(AppConfig):
+-    name = 'mgr'
++# from django.apps import AppConfig
++#
++#
++# class MgrConfig(AppConfig):
++#     name = 'mgr'
+Index: djangoProject/managewebsite/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"managewebsite URL Configuration\n\nThe `urlpatterns` list routes URLs to views. For more information please see:\n    https://docs.djangoproject.com/en/3.1/topics/http/urls/\nExamples:\nFunction views\n    1. Add an import:  from my_app import views\n    2. Add a URL to urlpatterns:  path('', views.home, name='home')\nClass-based views\n    1. Add an import:  from other_app.views import Home\n    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')\nIncluding another URLconf\n    1. Import the include() function: from django.urls import include, path\n    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))\n\"\"\"\nfrom django.contrib import admin\nfrom django.conf.urls.static import static\nfrom django.urls import path, include\n\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('sales/', include('sales.urls')),\n    path('api/mgr/', include('mgr.urls')),\n] +  static(\"/\", document_root=\"./z_dist\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/managewebsite/urls.py b/djangoProject/managewebsite/urls.py
+--- a/djangoProject/managewebsite/urls.py	(revision 5a9afdf7b94b32d0c14395b38b34cf20bb355cc1)
++++ b/djangoProject/managewebsite/urls.py	(date 1610840050172)
+@@ -21,5 +21,5 @@
+ urlpatterns = [
+     path('admin/', admin.site.urls),
+     path('sales/', include('sales.urls')),
+-    path('api/mgr/', include('mgr.urls')),
++    path('', include('mgr.urls')),
+ ] +  static("/", document_root="./z_dist")
+\ No newline at end of file
+Index: djangoProject/mgr/templates/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/mgr/templates/base.html b/djangoProject/mgr/templates/base.html
+new file mode 100644
+--- /dev/null	(date 1610840050160)
++++ b/djangoProject/mgr/templates/base.html	(date 1610840050160)
+@@ -0,0 +1,24 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <!-- Required meta tags -->
++    <meta charset="utf-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
++
++    <!-- Bootstrap CSS -->
++    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
++
++    <title>Hello, world!</title>
++  </head>
++  <body>
++    {% block content %}
++
++    {% endblock %}
++
++    <!-- Optional JavaScript -->
++    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
++    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
++    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
++    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
++  </body>
++</html>
+\ No newline at end of file
+Index: djangoProject/managewebsite/settings.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\nDjango settings for managewebsite project.\n\nGenerated by 'django-admin startproject' using Django 3.1.4.\n\nFor more information on this file, see\nhttps://docs.djangoproject.com/en/3.1/topics/settings/\n\nFor the full list of settings and their values, see\nhttps://docs.djangoproject.com/en/3.1/ref/settings/\n\"\"\"\n\nfrom pathlib import Path\n\n# Build paths inside the project like this: BASE_DIR / 'subdir'.\nBASE_DIR = Path(__file__).resolve().parent.parent\n\n\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/\n\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = '(6rrc1fzp)d^y$0z+q^uplo3ls5-+$odbl73x1xu=sxi7-qs0t'\n\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n\nALLOWED_HOSTS = []\n\n\n# Application definition\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'sales.apps.ManagewebConfig',\n    'common.apps.CommonConfig'\n]\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    # 'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'managewebsite.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates']\n        ,\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n        },\n    },\n]\n\nWSGI_APPLICATION = 'managewebsite.wsgi.application'\n\n\n# Database\n# https://docs.djangoproject.com/en/3.1/ref/settings/#databases\n\n# DATABASES = {\n#     'default': {\n#         'ENGINE': 'django.db.backends.sqlite3',\n#         'NAME': BASE_DIR / 'db.sqlite3',\n#     }\n# }\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'order_webmanager',\n        'USER': 'root',\n        'PASSWORD': '0315',\n        'HOST': '',  # Default: localhost\n        'PORT': '',  # Default: 3306,\n        'OPTIONS': {\n            'init_command': \"SET sql_mode='STRICT_TRANS_TABLES'\",\n        },\n    }\n}\n\n\n# Password validation\n# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\n\n# Internationalization\n# https://docs.djangoproject.com/en/3.1/topics/i18n/\n\nLANGUAGE_CODE = 'en-us'\n\nTIME_ZONE = 'UTC'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\n\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.1/howto/static-files/\n\nSTATIC_URL = '/static/'\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/managewebsite/settings.py b/djangoProject/managewebsite/settings.py
+--- a/djangoProject/managewebsite/settings.py	(revision 5a9afdf7b94b32d0c14395b38b34cf20bb355cc1)
++++ b/djangoProject/managewebsite/settings.py	(date 1610840050181)
+@@ -38,7 +38,8 @@
+     'django.contrib.messages',
+     'django.contrib.staticfiles',
+     'sales.apps.ManagewebConfig',
+-    'common.apps.CommonConfig'
++    'common.apps.CommonConfig',
++    'mgr',
+ ]
+ 
+ MIDDLEWARE = [
+Index: djangoProject/mgr/sign_in_out.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.http import JsonResponse\n\nfrom django.contrib.auth import authenticate, login, logout\n\n\n# 登录处理\ndef signin(request):\n    # 从 HTTP POST 请求中获取用户名、密码参数\n    userName = request.POST.get('username')\n    passWord = request.POST.get('password')\n\n    # 使用 Django auth 库里面的 方法校验用户名、密码\n    user = authenticate(username=userName, password=passWord)\n\n    # 如果能找到用户，并且密码正确\n    if user is not None:\n        if user.is_active:\n            if user.is_superuser:\n                login(request, user)\n                # 在session中存入用户类型\n                request.session['usertype'] = 'mgr'\n\n                return JsonResponse({'ret': 0})\n            else:\n                return JsonResponse({'ret': 1, 'msg': '请使用管理员账户登录'})\n        else:\n            return JsonResponse({'ret': 0, 'msg': '用户已经被禁用'})\n\n    # 否则就是用户名、密码有误\n    else:\n        return JsonResponse({'ret': 1, 'msg': '用户名或者密码错误'})\n\n\n# 登出处理\ndef signout(request):\n    # 使用登出方法\n    logout(request)\n    return JsonResponse({'ret': 0})
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/mgr/sign_in_out.py b/djangoProject/mgr/sign_in_out.py
+--- a/djangoProject/mgr/sign_in_out.py	(revision 5a9afdf7b94b32d0c14395b38b34cf20bb355cc1)
++++ b/djangoProject/mgr/sign_in_out.py	(date 1610840674061)
+@@ -22,13 +22,13 @@
+ 
+                 return JsonResponse({'ret': 0})
+             else:
+-                return JsonResponse({'ret': 1, 'msg': '请使用管理员账户登录'})
++                return JsonResponse({'ret': 1, 'msg': 'Please use administrator account to login'})
+         else:
+-            return JsonResponse({'ret': 0, 'msg': '用户已经被禁用'})
++            return JsonResponse({'ret': 0, 'msg': 'User is not activated'})
+ 
+     # 否则就是用户名、密码有误
+     else:
+-        return JsonResponse({'ret': 1, 'msg': '用户名或者密码错误'})
++        return JsonResponse({'ret': 1, 'msg': 'Incorrect user name or password'})
+ 
+ 
+ # 登出处理
+Index: djangoProject/mgr/templates/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/djangoProject/mgr/templates/home.html b/djangoProject/mgr/templates/home.html
+new file mode 100644
+--- /dev/null	(date 1610840050135)
++++ b/djangoProject/mgr/templates/home.html	(date 1610840050135)
+@@ -0,0 +1,6 @@
++{% extends 'base.html'%}
++
++{% block content %}
++    <h1>Hello World</h1>
++    <p>test</p>
++{% endblock %}
+\ No newline at end of file
