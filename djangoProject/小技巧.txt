@@ -35,4 +35,4 @@ SELECT * FROM mybook; #查询表单全部内容
 SELECT * FROM mybook WHERE price>75; #where条件匹配查询price>75的记录
 DELETE FROM mybook; #清空表单内容
 要让id不自动生成，在另外的列名称定义括号中加上primary_key = True
-bootstrap中br是跟上面的距离，class=container是跟左边隔开距离
+bootstrap中br是跟上面的距离，class=container是跟左边隔开距离。
