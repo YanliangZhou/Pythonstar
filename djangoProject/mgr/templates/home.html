@@ -1,6 +1,53 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    <h1>Hello World</h1>
-    <p>test</p>
+    html_template = '''
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    </style>
+    </head>
+        <body>
+            <table>
+            <tr>
+            <th>time</th>
+            <th>side</th>
+            <th>qty</th>
+            <th>symbol</th>
+            <th>px</th>
+            <th>exchange</th>
+            <th>class_type</th>
+            <th>description</th>
+            <th>tags</th>
+            <th>local_time</th>
+            <th>source</th>
+            <th>orderID</th>
+            <th>exchangeOID</th>
+            <th>fillID</th>
+            <th>strategy</th>
+            <th>ilink</th>
+            <th>px_multiplier</th>
+            <th>multiplier</th>
+            <th>TO</th>
+            <th>OC</th>
+            </tr>
+
+            %s
+
+
+            </table>
+    /    </body>
+    </html>
+    '''
+
 {% endblock %}
