@@ -5,6 +5,14 @@ from common.models import Order
 # def listorders(request):
 #     return HttpResponse('下面是系统中所有订单信息。。。')
 
+def home(request):
+    import json
+    # api_request = Order.objects.values()
+    # api = json.loads(api_request.content)
+    qs = Order.objects.values()
+    return render(request, 'base.html', {'api': qs})
+
+
 
 # 先定义好HTML模板
 html_template = '''
@@ -81,4 +89,11 @@ def listorders(request):
                 tableContent += f'<td>{value}</td>'
             tableContent += '</tr>'
     i = 0
-    return HttpResponse(html_template % tableContent)
+    # for order in qs:
+    #         tableContent += '<tr>'
+    #         for name, value in order.items():
+    #             tableContent += f'<td>{value}</td>'
+    #         tableContent += '</tr>'
+
+    # return HttpResponse(html_template % tableContent)
+    return render(request, 'base.html', {'api': tableContent})

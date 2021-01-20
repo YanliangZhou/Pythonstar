@@ -7,7 +7,7 @@ from mgr.views import listorders
 from . import views
 
 urlpatterns = [
-    path('', views.listorders,name="home"),
+    path('', views.home,name="home"),
     path('orders', listorders),
     # path('customers', customer.dispatcher),
     # path('medicines', medicine.dispat cher),
